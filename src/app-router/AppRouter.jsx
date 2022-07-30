@@ -1,13 +1,13 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Dashboard from '../pages/Dashboard';
-import UpdateBlog from '../pages/UpdateBlog';
-import Login from '../pages/Login';
-import Register from '../pages/Register';
-import Details from '../pages/Details';
-import About from '../pages/About';
-import NewBlog from '../pages/NewBlog';
-import Profile from '../pages/Profile';
+import Dashboard from '../pages/dashboard/Dashboard';
+import UpdateBlog from '../pages/updateblog/UpdateBlog';
+import Login from '../pages/login/Login';
+import Register from '../pages/register/Register';
+import Details from '../pages/details/Details';
+import About from '../pages/about/About';
+import NewBlog from '../pages/newblog/NewBlog';
+import Profile from '../pages/profile/Profile';
 
 const AppRouter = () => {
   return (
