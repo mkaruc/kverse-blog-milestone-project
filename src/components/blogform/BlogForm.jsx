@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import BlogCard from '../blogcard/BlogCard'
-import { BlogContext } from '../context/BlogContextProvider'
+import { BlogContext } from '../../contexts/BlogContext'
 
 const BlogForm = () => {
   const {getBlogs, blogList, isLoading} = useContext(BlogContext);
@@ -9,18 +9,22 @@ const BlogForm = () => {
     getBlogs()
   }, [getBlogs]);
 
-  isLoading ? (
-    <p>Loading...</p>
-  ): blogList?.length===0 ?(
-    <p>No Blog Found</p>
-  ):(
-    blogList?.map((item)=>(
-      <BlogCard key={item.id} item={{ ...item }} />
-    ))
-  )
+ 
 
   return (
-    <div>BlogForm</div>
+    <div>
+      {isLoading ? (
+        <div>
+
+        </div>
+      ):(
+        <div>
+          {blogList?.map((card)=>(
+            <BlogCard key={card.id} card={{...card}} />
+          ))}
+        </div>
+      )}
+    </div>
   )
 }
 
