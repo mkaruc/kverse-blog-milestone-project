@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom';
 import { createUser } from '../../helpers/firebase';
+import {MainDiv,Div,Button,Input,FormDiv} from './Register.style'
+import { forgotPassword, signIn, signUpProvider } from '../../helpers/firebase';
 const Register = () => {
   const [firstName, setFirstName] = useState();
   const [lastName, setLastName] = useState();
@@ -12,46 +14,50 @@ const Register = () => {
     e.preventDefault();
     const displayName = `${firstName} ${lastName}`;
     createUser(email, password, navigate, displayName);
+    
+  };
+  const handleProviderLogin=()=>{
+    signUpProvider(navigate);
+  };
+  const handleProviderGithubLogin=()=>{
+    console.log("under Construction")
   };
 
   return (
-    <div>
-      <div className='RegisterPhotos'>
-        <img src="https://picsum.photos/800/800" alt="Register page photos" />
-      </div>
-      <div className="registerForm">
+    <MainDiv>
+      <Div className="registerForm">
         <h1 className="registerHeader">Register</h1>
         <h2 className="mottoRegister">Welcome to K-Verse's Wonderland</h2>
-        <form id='register' onSubmit={handleRegister}>
-          <div className="firstName">
+        <div id='register' onSubmit={handleRegister}>
+          <FormDiv className="firstName">
           <label htmlFor="text">First Name</label>
-          <input type="text" id='text' placeholder='Enter Your First Name' onChange={(e)=> setEmail(e.target.value)} required/>
-          </div>
-          <div className="lastName">
+          <Input type="text" id='text' placeholder='Enter Your First Name' onChange={(e)=> setEmail(e.target.value)} required/>
+          </FormDiv>
+          <FormDiv className="lastName">
           <label htmlFor="text">Last Name</label>
-          <input type="text" id='text' placeholder='Enter Your Last Name' onChange={(e)=> setEmail(e.target.value)} required/>
-          </div>
-          <div className="emailLogin">
+          <Input type="text" id='text' placeholder='Enter Your Last Name' onChange={(e)=> setEmail(e.target.value)} required/>
+          </FormDiv>
+          <FormDiv className="emailLogin">
           <label htmlFor="email">Email</label>
-          <input type="email" id='email' placeholder='Enter Your Email Adress' onChange={(e)=> setEmail(e.target.value)} required/>
-          </div>
-          <div className="passwordLogin">
+          <Input type="email" id='email' placeholder='Enter Your Email Adress' onChange={(e)=> setEmail(e.target.value)} required/>
+          </FormDiv>
+          <FormDiv className="passwordLogin">
           <label htmlFor="password">Password</label>
-          <input type="password" id='password' placeholder='Enter Your Password' onChange={(e)=> setPassword(e.target.value)} required/>
-          </div>
-          <input type="submit" value="Register" />
-        </form>
-        <button className="googleLogin" >
+          <Input type="password" id='password' placeholder='Enter Your Password' onChange={(e)=> setPassword(e.target.value)} required/>
+          </FormDiv>
+          <Input type="submit" value="Register" />
+        </div>
+        <Button className="googleLogin" onClick={handleProviderLogin}>
           Continue with Google
-        </button>
-        <button className="githubLogin" >
+        </Button>
+        <Button className="githubLogin" onClick={handleProviderLogin}>
           Continue with GitHub
-        </button>
+        </Button>
         <div className="registerLogin">
         Do you have an account? <Link to="/login">Login</Link> also.
         </div>
-      </div>
-    </div>
+      </Div>
+    </MainDiv>
   )
 }
 

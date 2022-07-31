@@ -8,6 +8,7 @@ import Details from '../pages/details/Details';
 import About from '../pages/about/About';
 import NewBlog from '../pages/newblog/NewBlog';
 import Profile from '../pages/profile/Profile';
+import Footer from '../components/footer/Footer'
 
 const AppRouter = () => {
   return (
@@ -22,6 +23,7 @@ const AppRouter = () => {
             <Route path="/UpdateBlog" element={<UpdateBlog />}/>
             <Route path="/Profile" element={<Profile />}/>
         </Routes>
+        <Footer />
     </BrowserRouter>
   )
 }

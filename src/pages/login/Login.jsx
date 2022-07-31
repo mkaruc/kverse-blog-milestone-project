@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom';
 import { forgotPassword, signIn, signUpProvider } from '../../helpers/firebase';
-import {MainDiv, Image, Div, FormDiv, Input,} from './Login.style';
+import {MainDiv, Button, Div, FormDiv, Input,} from './Login.style';
 
 
 const Login = () => {
@@ -22,9 +22,9 @@ const Login = () => {
 
   return (
     <MainDiv>
-      <div className='LoginPhotos'>
+      {/* <div className='LoginPhotos'>
         <Image src="https://picsum.photos/800/800" alt="Login page photos" />
-      </div>
+      </div> */}
       <Div className="loginForm">
         <h1 className="loginHeader">Login</h1>
         <h2 className="mottoLogin">follow the white rabbit</h2>
@@ -38,16 +38,16 @@ const Login = () => {
           <Input type="password" id='password' placeholder='Enter Your Password' onChange={(e)=> setPassword(e.target.value)} required/>
           </FormDiv>
           <div className="forgotten" onClick={()=>forgotPassword(email)}>
-            Forgot Password?
+              Forgot Password?
           </div>
-          <Input type="submit" value="Login" />
+          <Input type="submit" value="Login"/>
         </form>
-        <button className="googleLogin" onClick={handleProviderLogin}>
+        <Button className="googleLogin" onClick={handleProviderLogin}>
           Continue with Google
-        </button>
-        <button className="githubLogin" onClick={handleProviderLogin}>
+        </Button>
+        <Button className="githubLogin" onClick={handleProviderLogin}>
           Continue with GitHub
-        </button>
+        </Button>
         <div className="registerLogin">
         Don't have an account? <Link to="/register">Register</Link> now.
         </div>

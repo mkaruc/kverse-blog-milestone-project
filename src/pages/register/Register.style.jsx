@@ -26,12 +26,13 @@ export const Div = styled.div`
     transform: translateY(1000px);
     animation: slideIn .9s ease-in-out forwards .5s;
 
+
     @keyframes slideIn {
     0% {
       transform: translateX(1000px) scale(.5);
     }
     100% {
-      transform: translateX(500px) scale(1);
+      transform: translateX(400px) scale(1);
     }
   }
 `
