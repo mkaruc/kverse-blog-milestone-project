@@ -1,5 +1,6 @@
 import Navbar from '../../components/navbar/Navbar';
 import Trends from '../../components/trends/Trends';
+import Footer from '../../components/footer/Footer';
 import BlogForm from '../../components/blogform/BlogForm';
 import { toastSuccessNotify,toastWarnNotify } from '../../helpers/toastNotify';
 import { AuthContext } from '../../contexts/AuthContext';

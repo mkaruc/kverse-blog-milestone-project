@@ -12,19 +12,13 @@ const BlogForm = () => {
  
 
   return (
+  <div>
     <div>
-      {isLoading ? (
-        <div>
-
-        </div>
-      ):(
-        <div>
-          {blogList?.map((card)=>(
-            <BlogCard key={card.id} card={{...card}} />
-          ))}
-        </div>
-      )}
+      {blogList?.map((card)=>(
+      <BlogCard key={card.id} card={{...card}} />
+      ))}
     </div>
+  </div>
   )
 }
 
