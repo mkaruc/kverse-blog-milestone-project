@@ -6,3 +6,11 @@ export const Div= styled.div`
     align-items: center;
     margin: 10px;
 `
+export const InnerDiv= styled.div`
+    display: ;
+    
+`
+
+export const TrendsDiv= styled.div`
+    width: 30%;
+`
