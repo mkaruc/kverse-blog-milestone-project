@@ -18,15 +18,15 @@ const BlogCard = ({card}) => {
       </div>
       <div>
         <div>
-          <h4>{card.title}</h4>
+          <h4>{title}</h4>
         </div>
         <div>
-          {card.content}
+          {content}
         </div>
       </div>
       <div>
         <div>
-          {card.email}
+          {email}
         </div>
         <div>
           //icons

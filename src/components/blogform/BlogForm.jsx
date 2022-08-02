@@ -1,24 +1,21 @@
 import React, { useContext, useEffect, useState } from 'react'
 import BlogCard from '../blogcard/BlogCard'
-import { BlogContext } from '../../contexts/BlogContext'
+import { BlogContext } from '../../contexts/BlogContextProvider'
 
 const BlogForm = () => {
-  const {getBlogs, blogList, isLoading} = useContext(BlogContext);
+  const {getBlogs, cardList, isLoading} = useContext(BlogContext);
 
   useEffect(() => {
     getBlogs()
   }, [getBlogs]);
 
  
-
   return (
   <div>
-    <div>
-      {blogList?.map((card)=>(
+      {cardList?.map((card)=>(
       <BlogCard key={card.id} card={{...card}} />
       ))}
     </div>
-  </div>
   )
 }
 

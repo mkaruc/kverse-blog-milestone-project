@@ -1,18 +1,18 @@
 import logo from './logo.svg';
 import './App.css';
-import AuthContextProvider from '../src/contexts/AuthContext';
+import AuthContext from '../src/contexts/AuthContext';
 import AppRouter from './app-router/AppRouter';
 import { ToastContainer } from 'react-toastify';
-import BlogContextProvider from './contexts/BlogContext';
+import BlogContextProvider from './contexts/BlogContextProvider';
 
 function App() {
   return (
     <div>
       <BlogContextProvider>
-      <AuthContextProvider>
+      <AuthContext>
         <AppRouter />
         <ToastContainer />
-      </AuthContextProvider>
+      </AuthContext>
       </BlogContextProvider>
     </div>
   );

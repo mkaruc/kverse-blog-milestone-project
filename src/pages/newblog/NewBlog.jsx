@@ -1,69 +1,58 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from "react";
+import { Formik, useFormik } from "formik";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
-import { BlogContext } from "../../contexts/BlogContext";
-import { useNavigate } from 'react-router-dom'
+import { BlogContext } from "../../contexts/BlogContextProvider";
 import { toastErrorNotify, toastSuccessNotify } from "../../helpers/toastNotify";
-// import { Formik,useFormik } from 'formik';
-import Navbar from '../../components/navbar/Navbar';
 import { Container,MainDiv,Div,FormDiv,Input,Textarea,ExpImg } from './NewBlog.style';
 import DefaultImage from '../../assets/placeholder.png'
+import Navbar from '../../components/navbar/Navbar';
 
-const NewBlog = ({blogs, setBlogs}) => {
-  const navigate=useNavigate();
-  const {currentUser}=useContext(AuthContext)
-  const {addNewBlog}=useContext(BlogContext)
-  const [title, setTitle]=useState("");
-  const [imgUrl, setImgUrl]=useState("");
-  const [content, setContent]=useState("");
-  const [email, setEmail]=useState("")
-  
-  
-  function submitBlog(e){
-    e.preventDefault();
-    const id=new Date().getTime();
-    const addBlog={id:id, title:title, imgUrl: imgUrl, content: content, email: email}
-    console.log(addBlog);
-    setBlogs([...blogs,addBlog])
-    navigate("/");
-  };
-//   const formikForm=useFormik({
-// initialValues:{
-//   title:"",
-//   imgUrl:"",
-//   content:"",
-//   email:currentUser.email,
-// },
-// onSubmit: async(values)=>{
-//   try {
-//     await addNewBlog(values);
-//     toastSuccessNotify("New blog added!..")
-//     navigate("/");
-//   } catch (error) {
-//     toastErrorNotify(error.message);
-//   }
-// }
+const NewBlog = () => {
+  const navigate = useNavigate();
+  const {currentUser} = useContext(AuthContext)
+  const {addNewBlog} = useContext(BlogContext)
 
-//   })
+  const formik = useFormik({
+    initialValues: {
+      title: "",
+      imgUrl: "",
+      content:"",
+      email:currentUser.email,
+    },
+    onSubmit:async (values) => {
+        try {
+          await addNewBlog(values);
+          toastSuccessNotify("New blog added successfuly");
+          navigate("/");
+        } catch (err) {
+         // alert(err.message);
+         toastErrorNotify(err.message);
+        }
+    },
+  });
+
   return (
-    <MainDiv>
-      <Navbar />
-      <Container>
+   <MainDiv>
+   <Navbar />
+    <Container>
       <h4>Add a New Blog</h4>
-      <FormDiv onSubmit={submitBlog}>
-        <Div className='titleBox'>
+      <Formik>
+          <FormDiv onSubmit={formik.handleSubmit}>
+            <Div className='titleBox'>
           <label htmlFor="title">Title</label>
-          <Input type="text" value={title} name="Title" id='title' placeholder='Add Title' onChange={(e)=> setTitle(e.target.value)} required/>
+          <Input type="text" value={formik.values.title} name="title" id='title' placeholder='Add Title' onChange={formik.handleChange} onBlur={formik.handleBlur} error={formik.touched.title && Boolean(formik.errors.title)}/>
         </Div>
         <Div>
-          <ExpImg src={imgUrl || DefaultImage} alt="" />
+          <ExpImg src={formik.values.imgUrl || DefaultImage} alt="" />
         </Div>
         <Div className='imgurlBox'>
           <label htmlFor="imgUrl">Image URL</label>
-          <Input type="text" value={imgUrl} name="ImgUrl" id='imgUrl' placeholder='Add a Image Link' onChange={(e)=> setImgUrl(e.target.value)} />
+          <Input type="text" value={formik.values.imgUrl} name="imgUrl" id='imgUrl' placeholder='Add a Image Link' onChange={formik.handleChange}  onBlur={formik.handleBlur} error={formik.touched.title && Boolean(formik.errors.imgUrl)}/>
         </Div>
-        <Div >
+        <Div>
           <label htmlFor="content">Content</label>
-          <Textarea  value={content} className='contentBox' name="Content" id='content' placeholder='Add a content' onChange={(e)=> setContent(e.target.value)} required/>
+          <Textarea  value={formik.values.content} className='contentBox' name="content" id='content' placeholder='Add a content' onChange={formik.handleChange} onBlur={formik.handleBlur} error={formik.touched.title && Boolean(formik.errors.content)}/>
         </Div>
         <Div>
           <Input type="submit" value="Add A Blog" />
@@ -71,31 +60,12 @@ const NewBlog = ({blogs, setBlogs}) => {
         <Div>
           <p>{currentUser.email}</p>
         </Div>
-        </FormDiv>
-      {/* <Formik>
-        {()=>(
-          <form onSubmit={formikForm.handleSubmit}>
-            <div>
-             <div>
+          </FormDiv>
+        
+      </Formik>
+      
+    </Container></MainDiv>
+  );
+};
 
-             </div>
-             <div name="title" label="Title" variant="outlined" value={formikForm.values.title} onChange={formikForm.handleChange} onBlur={formikForm.handleBlur}>
-             </div>
-             <div name="imgUrl" label="Image URL" variant="outlined" value={formikForm.values.imgUrl} onChange={formikForm.handleChange} onBlur={formikForm.handleBlur}>
-             </div>
-             <div name="content" label="Content" variant="outlined" value={formikForm.values.content} onChange={formikForm.handleChange} onBlur={formikForm.handleBlur}>
-             </div>
-             <div>
-              <button type='submit'>Submit</button>
-             </div>
-            </div>
-          </form>
-
-        )}
-      </Formik> */}
-      </Container>
-    </MainDiv>
-  )
-}
-
-export default NewBlog
+export default NewBlog;

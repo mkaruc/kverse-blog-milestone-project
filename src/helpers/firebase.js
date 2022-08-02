@@ -130,3 +130,6 @@ export const forgotPassword = (email) => {
       // ..
     });
 };
+
+const firebase = initializeApp(firebaseConfig);
+export default firebase;
