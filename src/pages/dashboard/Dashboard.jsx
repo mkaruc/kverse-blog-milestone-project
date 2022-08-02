@@ -5,10 +5,12 @@ import BlogForm from '../../components/blogform/BlogForm';
 import { toastSuccessNotify,toastWarnNotify } from '../../helpers/toastNotify';
 import { AuthContext } from '../../contexts/AuthContext';
 import { useContext } from 'react';
-import { Div, InnerDiv,TrendsDiv } from "./Dashboard.style";
+import { Div, InnerDiv, TrendsDiv, NavDiv,Button, NewBlogging } from "./Dashboard.style";
+import { useNavigate } from 'react-router-dom';
 
 const Dashboard = () => {
   const { currentUser } = useContext(AuthContext);
+  const navigate=useNavigate();
   // {currentUser ? (
   //       toastSuccessNotify('Login Successfully')
   //     ):(
@@ -16,12 +18,15 @@ const Dashboard = () => {
   //     )}
   return (
     <div>
-      <Navbar />
+      <NavDiv>
+        <Navbar />
+      </NavDiv>
       <Div>
         <InnerDiv>
-        <BlogForm/>
+        <BlogForm />
         </InnerDiv>
         <TrendsDiv>
+        
         <Trends />
         </TrendsDiv>
       </Div>
