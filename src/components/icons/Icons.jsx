@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import LikeIcon from '../../assets/like.png'
 import { IconDiv,ImageIcon,Div } from './Icons.style'
 import Comment from '../../assets/comment.png'
 import CommentBox from '../comment/CommentBox'
+import { BlogContext } from "../../contexts/BlogContextProvider";
+import { useNavigate, useParams } from "react-router-dom";
 
 
 const Icons = () => {
@@ -10,12 +12,13 @@ const Icons = () => {
     const [isClicked, setIsClicked] = useState(false);
     const [isCommentClicked, setIsCommentClicked] = useState(false);
     const [text, setText] = useState("");
-
-    const handleClick = () => {
+    const { likeBlog } = useContext(BlogContext);
+    const { like } = useParams(0);
+    const handleClick = (like) => {
       if (isClicked) {
-        setLikes(likes - 1);
+        likeBlog(like - 1);
       } else {
-        setLikes(likes + 1);
+        likeBlog(like + 1);
       }
       setIsClicked(!isClicked);
     };

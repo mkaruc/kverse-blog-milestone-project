@@ -11,11 +11,6 @@ import { useNavigate } from 'react-router-dom';
 const Dashboard = () => {
   const { currentUser } = useContext(AuthContext);
   const navigate=useNavigate();
-  // {currentUser ? (
-  //       toastSuccessNotify('Login Successfully')
-  //     ):(
-  //     toastWarnNotify('Logout')
-  //     )}
   return (
     <div>
       <NavDiv>

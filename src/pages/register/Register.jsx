@@ -45,7 +45,9 @@ const Register = () => {
           <label htmlFor="password">Password</label>
           <Input type="password" id='password' placeholder='Enter Your Password' onChange={(e)=> setPassword(e.target.value)} required/>
           </FormDiv>
+          <FormDiv>
           <Input type="submit" value="Register" />
+          </FormDiv>
         </div>
         <Button className="googleLogin" onClick={handleProviderLogin}>
           Continue with Google

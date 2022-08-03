@@ -27,3 +27,11 @@ export const Button = styled.button`
         opacity: 0.8;
     }
 `
+export const Profile=styled.div` 
+    padding: 5px;
+    &:hover{
+        border-radius: 5px;
+        background: #00000016;
+        cursor:pointer;
+    }
+`

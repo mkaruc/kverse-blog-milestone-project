@@ -13,5 +13,6 @@ export const Button = styled.button`
 `
 export const MainDiv=styled.div`
     background: #fa6f2f3d;
+    border-radius: 5px;
     height: 100%;
 `

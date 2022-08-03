@@ -15,10 +15,21 @@ const BlogContextProvider = (props) => {
       title: props.title,
       imgUrl: props.imgUrl,
       content: props.content,
-      email: props.email
+      email: props.email ,
+      like: props.like
     });
   };
+//add commment
 
+const likeBlog = (id) => {
+  const db = getDatabase();
+      const likeData = {
+        like: props.like
+      }
+      const likes = {}
+      likes["/users/" + props.like ] = likeData;
+      return likes(ref(db), likes)
+}
   const getBlogs = () => {
    try{
       setisLoading(true);
@@ -66,7 +77,7 @@ const BlogContextProvider = (props) => {
   }
 
   return (
-    <BlogContext.Provider value={{deleteBlog, updateBlog, addNewBlog, getBlogs, isLoading, cardList }}>
+    <BlogContext.Provider value={{likeBlog,deleteBlog, updateBlog, addNewBlog, getBlogs, isLoading, cardList }}>
       {props.children}
     </BlogContext.Provider>
   );

@@ -18,3 +18,6 @@ export const Linked = styled.a`
     text-decoration:none;
     color: black;
 `
+export const Div = styled.div`
+    cursor: pointer;
+`

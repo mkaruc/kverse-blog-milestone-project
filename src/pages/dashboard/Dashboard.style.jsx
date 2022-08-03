@@ -12,7 +12,7 @@ export const InnerDiv= styled.div`
 export const TrendsDiv= styled.div`
     width: 30%;
     height: 450px;
-    border: 1px aqua solid;
+    border: none;
     position: sticky;
     top:70px;
 `

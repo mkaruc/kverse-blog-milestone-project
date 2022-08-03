@@ -45,9 +45,9 @@ const Login = () => {
         <Button className="googleLogin" onClick={handleProviderLogin}>
           Continue with Google
         </Button>
-        <Button className="githubLogin" onClick={handleProviderLogin}>
+        {/* <Button className="githubLogin" onClick={handleProviderLogin}>
           Continue with GitHub
-        </Button>
+        </Button> */}
         <div className="registerLogin">
         Don't have an account? <Link to="/register">Register</Link> now.
         </div>
