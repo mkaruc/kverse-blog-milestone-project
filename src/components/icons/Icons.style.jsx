@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const IconDiv=styled.div`
-    background: #cecece3c;
+    
     height: 40px;
     display: flex;
     align-items: center;
@@ -12,4 +12,9 @@ export const IconDiv=styled.div`
 export const ImageIcon=styled.img`
     height: 30px;
     cursor: pointer;
+`
+export const Div=styled.div`
+    display: flex;
+    align-items: center;
+    gap: 5px;
 `

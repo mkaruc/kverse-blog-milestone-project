@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import Icons from '../icons/Icons';
-import { Card,Image,ImageContainer, ContentDiv, MainDiv } from './BlogCard.style';
+import { Card,Image,ImageContainer, ContentDiv, MainDiv,IconDiv } from './BlogCard.style';
 
 const BlogCard = ({card}) => {
   const {id,title,imgUrl,content,email}=card; 
@@ -33,9 +33,9 @@ const BlogCard = ({card}) => {
         
       </div>
     </Card>
-    <div>
+    <IconDiv>
           <Icons />
-        </div>
+        </IconDiv>
     </MainDiv>
   )
 }

@@ -15,7 +15,7 @@ const BlogContextProvider = (props) => {
       title: props.title,
       imgUrl: props.imgUrl,
       content: props.content,
-      // email: props.email,
+      email: props.email
     });
   };
 
