@@ -16,20 +16,46 @@ const BlogContextProvider = (props) => {
       imgUrl: props.imgUrl,
       content: props.content,
       email: props.email ,
-      like: props.like
+      likes: props.likes
     });
   };
 //add commment
 
-const likeBlog = (id) => {
-  const db = getDatabase();
-      const likeData = {
-        like: props.like
-      }
-      const likes = {}
-      likes["/users/" + props.like ] = likeData;
-      return likes(ref(db), likes)
+const likeBlog = (props) => {
+  try {
+    const db = getDatabase();
+    const postLike = {
+      likes:props.likes,
+      id:props.id,
+    }
+    const likes = {}
+    likes["/users/" + props.id ] = postLike;
+    console.log(postLike);
+    return update(ref(db), likes)
+  } catch (err) {
+    alert(err.message);
+  }
 }
+const updateBlog = (props) => {
+  try {
+    const db = getDatabase();
+    const postData = {
+      title: props.title,
+      imgUrl:props.imgUrl,
+      content:props.content,
+      id:props.id,
+      email:props.email,
+    }
+    const updates = {}
+    updates["/users/" + props.id ] = postData;
+    console.log(postData);
+    return update(ref(db), updates)
+  } catch (err) {
+    alert(err.message);
+  }
+}
+
+
   const getBlogs = () => {
    try{
       setisLoading(true);
@@ -51,25 +77,7 @@ const likeBlog = (id) => {
     }
   };
 
-  const updateBlog = (props) => {
-    try {
-      const db = getDatabase();
-      const postData = {
-        title: props.title,
-        imgUrl:props.imgUrl,
-        content:props.content,
-        id:props.id,
-        email:props.email,
-      }
-      const updates = {}
-      updates["/users/" + props.id ] = postData;
-      console.log(postData);
-      return update(ref(db), updates)
-    } catch (err) {
-      alert(err.message);
-    }
-  }
-
+  
   const deleteBlog = (id) => {
     const db = getDatabase();
     remove(ref(db,"users/" + id));

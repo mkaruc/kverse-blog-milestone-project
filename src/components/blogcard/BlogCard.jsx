@@ -2,6 +2,7 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import Icons from '../icons/Icons';
 import { Card,Image,ImageContainer, ContentDiv, MainDiv,IconDiv } from './BlogCard.style';
+import DefaultImage from '../../assets/placeholder.png'
 
 const BlogCard = ({card}) => {
   const {id,title,imgUrl,content,email}=card; 
@@ -16,7 +17,7 @@ const BlogCard = ({card}) => {
     <MainDiv>
     <Card onClick={(e) => cardDetails(e.target)}>
       <ImageContainer>
-        <Image src={imgUrl} alt={imgUrl} />
+        <Image src={imgUrl || DefaultImage} alt={imgUrl} />
       </ImageContainer>
       <div>
         <div>

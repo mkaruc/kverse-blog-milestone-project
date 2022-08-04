@@ -19,7 +19,7 @@ const NewBlog = () => {
       imgUrl: "",
       content:"",
       email:currentUser.email,
-      like: 0,
+      likes: 0,
     },
     onSubmit:async (values) => {
         try {
@@ -62,7 +62,7 @@ const NewBlog = () => {
           <p>{currentUser.email}</p>
         </Div>
         <Div>
-          <p>{formik.values.like}</p>
+          {/* <p>{formik.values.likes}</p> */}
         </Div>
           </FormDiv>
         
