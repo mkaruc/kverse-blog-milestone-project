@@ -56,7 +56,7 @@ const UpdateBlog = () => {
           <Textarea  value={formik.values.content} className='contentBox' name="content" id='content' placeholder='Add a content' onChange={formik.handleChange} onBlur={formik.handleBlur} error={formik.touched.title && Boolean(formik.errors.content)}/>
         </Div>
         <Div>
-          <Input type="submit" value="Add A Blog" />
+          <Input type="submit" value="Update The Blog" />
         </Div>
         <Div>
           <p>{currentUser.email}</p>

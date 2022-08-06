@@ -6,12 +6,17 @@ export const MainDiv=styled.div`
 `
 
 export const Container=styled.div`
-    margin: 3rem 30rem;
+    margin: 1rem auto 0 auto;
     border: white 1px solid;
     padding: 20px;
     border-radius: 10px;
     background: antiquewhite;
-    height: 100vh;
+    height: 100%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
 `
 export const ExpImg = styled.img`

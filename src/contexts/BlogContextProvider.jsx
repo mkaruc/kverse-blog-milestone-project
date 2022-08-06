@@ -21,6 +21,10 @@ const BlogContextProvider = (props) => {
   };
 //add commment
 
+
+
+//add like
+
 const likeBlog = (props) => {
   try {
     const db = getDatabase();

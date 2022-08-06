@@ -6,6 +6,7 @@ import { toastInfoNotify } from "../../helpers/toastNotify";
 import DefaultImage from '../../assets/placeholder.png'
 import Commentbox from "../comment/CommentBox";
 import Icons from "../icons/Icons";
+import { Image } from "./DetailCard.style";
 
 const DetailCard = ({ cardDetail }) => {
   const { content, title, email, imgUrl } = cardDetail;
@@ -23,7 +24,7 @@ const DetailCard = ({ cardDetail }) => {
     <div>
         <div>
             <div>
-                <img src={imgUrl || DefaultImage} alt="" />
+                <Image src={imgUrl || DefaultImage} alt="" />
             </div>
             <div>
                 <div>

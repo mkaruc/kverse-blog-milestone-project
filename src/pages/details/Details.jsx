@@ -3,6 +3,7 @@ import { BlogContext } from "../../contexts/BlogContextProvider";
 import { useParams } from "react-router-dom";
 import DetailCard from "../../components/detailcard/DetailCard";
 import Navbar from "../../components/navbar/Navbar";
+import { Div } from "./Details.style";
 
 const Details = () => {
   const { id } = useParams();
@@ -13,7 +14,10 @@ const Details = () => {
   return (
     <div>
       <Navbar/>
-      <DetailCard cardDetail={cardDetail} />
+      <Div>
+        <DetailCard cardDetail={cardDetail} />
+      </Div>
+      
     </div>
   );
 };
