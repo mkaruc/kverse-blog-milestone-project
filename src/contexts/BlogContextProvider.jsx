@@ -25,15 +25,19 @@ const likeBlog = (props) => {
   try {
     const db = getDatabase();
     const postLike = {
-      likes:props.likes,
+      title: props.title,
+      imgUrl:props.imgUrl,
+      content:props.content,
       id:props.id,
+      email:props.email,
+      likes: props.likes
     }
     const likes = {}
     likes["/users/" + props.id ] = postLike;
     console.log(postLike);
     return update(ref(db), likes)
   } catch (err) {
-    alert(err.message);
+    // alert(err.message);
   }
 }
 const updateBlog = (props) => {
@@ -45,6 +49,7 @@ const updateBlog = (props) => {
       content:props.content,
       id:props.id,
       email:props.email,
+      likes: props.likes
     }
     const updates = {}
     updates["/users/" + props.id ] = postData;

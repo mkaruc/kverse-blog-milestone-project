@@ -1,13 +1,21 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 import Icons from '../icons/Icons';
 import { Card,Image,ImageContainer, ContentDiv, MainDiv,IconDiv } from './BlogCard.style';
 import DefaultImage from '../../assets/placeholder.png'
+import { BlogContext } from '../../contexts/BlogContextProvider'
+
 
 const BlogCard = ({card}) => {
-  const {id,title,imgUrl,content,email}=card; 
+  const {likeBlog} = useContext(BlogContext);
+  const {id,title,imgUrl,content,email, likes}=card; 
   const navigate=useNavigate();
   
+  useEffect(()=>{
+    likeBlog()
+  },[likeBlog]
+  ) 
+
   const cardDetails=(e)=>{
     navigate(`/details/${id}`);
   }
@@ -35,7 +43,7 @@ const BlogCard = ({card}) => {
       </div>
     </Card>
     <IconDiv>
-          <Icons />
+          <Icons card={card}/>
         </IconDiv>
     </MainDiv>
   )

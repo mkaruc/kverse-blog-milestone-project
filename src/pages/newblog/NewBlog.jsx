@@ -19,7 +19,7 @@ const NewBlog = () => {
       imgUrl: "",
       content:"",
       email:currentUser.email,
-      likes: 0,
+      likes: "0",
     },
     onSubmit:async (values) => {
         try {

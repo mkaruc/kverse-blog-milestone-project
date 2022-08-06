@@ -9,14 +9,16 @@ import About from '../pages/about/About';
 import NewBlog from '../pages/newblog/NewBlog';
 import Profile from '../pages/profile/Profile';
 import Footer from '../components/footer/Footer'
-
+import PrivateRouter from './PrivateRouter';
 const AppRouter = () => {
   return (
     <BrowserRouter>
         <Routes>
-            <Route path="/" element={<Dashboard />}/>
-            <Route path="/login" element={<Login />}/>
+          <Route path="/login" element={<Login />}/>
             <Route path="/register" element={<Register />}/>
+        <Route element={<PrivateRouter />}>
+            <Route path="/" element={<Dashboard />}/>
+        </Route>
             <Route path="/details/:id" element={<Details />}/>
             <Route path="/about" element={<About />}/>
             <Route path="/newblog" element={<NewBlog />}/>

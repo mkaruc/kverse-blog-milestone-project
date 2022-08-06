@@ -20,7 +20,8 @@ const UpdateBlog = () => {
       imgUrl: cardDetail.imgUrl,
       content:cardDetail.content,
       email:currentUser.email,
-      id:cardDetail.id
+      id:cardDetail.id,
+      likes: cardDetail.likes,
     },
     onSubmit : async (values) => {
       try {
@@ -59,6 +60,9 @@ const UpdateBlog = () => {
         </Div>
         <Div>
           <p>{currentUser.email}</p>
+        </Div>
+        <Div>
+          <p>Likes:{formik.values.likes}</p>
         </Div>
           </FormDiv>
         

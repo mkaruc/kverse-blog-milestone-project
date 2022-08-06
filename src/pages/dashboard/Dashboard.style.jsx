@@ -7,6 +7,7 @@ export const Div= styled.div`
 `
 export const InnerDiv= styled.div`
     flex-wrap: wrap;
+    width: 100%;
 `
 
 export const TrendsDiv= styled.div`

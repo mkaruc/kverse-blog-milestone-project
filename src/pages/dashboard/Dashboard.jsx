@@ -20,10 +20,10 @@ const Dashboard = () => {
         <InnerDiv>
         <BlogForm />
         </InnerDiv>
-        <TrendsDiv>
+        {/* <TrendsDiv>
         
         <Trends />
-        </TrendsDiv>
+        </TrendsDiv> */}
       </Div>
     </div>
   )

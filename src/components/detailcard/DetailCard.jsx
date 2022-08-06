@@ -34,9 +34,9 @@ const DetailCard = ({ cardDetail }) => {
                       <p>{content}</p>
                     </div>
                 </div>
-                <div>
+                {/* <div>
                   <Icons/>
-                </div>
+                </div> */}
                 <div>
                   {email}
                 </div>
