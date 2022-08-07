@@ -1,4 +1,4 @@
-import { getDatabase, onValue, push, query, ref, remove, set, update } from "firebase/database";
+import { getDatabase, onValue, push, query, ref, remove, set, update, onChildChanged } from "firebase/database";
 import React, { createContext, useState } from "react";
 
 export const BlogContext = createContext();
@@ -36,10 +36,10 @@ const likeBlog = (props) => {
       email:props.email,
       likes: props.likes
     }
-    const likes = {}
-    likes["/users/" + props.id ] = postLike;
+    const updatelikes = {}
+    updatelikes["/users/" + props.id + "/likes"] = postLike;
     console.log(postLike);
-    return update(ref(db), likes)
+    return push(ref(db), updatelikes)
   } catch (err) {
     // alert(err.message);
   }

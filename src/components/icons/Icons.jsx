@@ -93,11 +93,57 @@
 
 // export default Icons
 
-import React from 'react'
+import React, { useContext, useState } from 'react'
+import database from '../../helpers/firebase'
+import { getDatabase, onValue, push, query, ref, remove, set, update } from "firebase/database";
+import { Formik, useFormik } from "formik";
+import { BlogContext } from "../../contexts/BlogContextProvider";
 
-const Icons = () => {
+const Icons = ({id,likes}) => {
+  const [like, setLike]=useState(likes);
+  const [isClicked, setIsClicked] = useState(false);
+  const {likeBlog} = useContext(BlogContext);
+
+  
+  const formik = useFormik({
+    initialValues: {
+      id: id,
+      likes: like,
+    },
+    onSubmit : async (values) => {
+      try {
+        await likeBlog(values);
+      } catch (err) {
+        // toastErrorNotify(err.message);
+      }
+  },
+});
+
+  const handleClick =() =>{
+    if (isClicked) {
+      setLike(like - 1);
+    } else {
+      setLike(like + 1);
+    }
+    setIsClicked(!isClicked);
+
+  };
+
   return (
-    <div>Icons</div>
+    <div>
+      <Formik>
+        <form onSubmit={formik.handleSubmit}>
+          <div>
+             <input type="number" value={formik.values.likes+like} name="likes" id='likes' onChange={formik.handleChange} onBlur={formik.handleBlur} error={formik.touched.likes && Boolean(formik.errors.likes)}/>
+          </div>
+          <span>{formik.values.likes}</span><input type="submit" value="Like" onClick={handleClick}/>
+          <div>
+          
+          </div>
+       </form>
+      </Formik>
+      
+    </div>
   )
 }
 
